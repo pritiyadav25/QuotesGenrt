@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Aesthetic Quote Generator</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Poppins", sans-serif;
+        }
+
+        body {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #105a7a, #55050a);
+        }
+
+        .card {
+            width: 380px;
+            padding: 30px;
+            background: rgba(5, 0, 16, 0.726);
+            border-radius: 20px;
+            text-align: center;
+            backdrop-filter: blur(12px);
+            box-shadow: 0 10px 35px rgba(0, 0, 0, 0.35);
+            animation: float 3s ease-in-out infinite;
+            
+        }
+
+        .heading {
+            color: #fff;
+            font-size: 22px;
+            margin-bottom: 18px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .quote-text {
+            color: #f8f8f8;
+            font-size: 18px;
+            min-height: 80px;
+            opacity: 0;
+            line-height: 1.5;
+            transition: opacity 0.7s ease;
+            padding: 0 10px;
+        }
+
+        .show {
+            opacity: 1;
+        }
+
+        .btn {
+            margin-top: 20px;
+            padding: 12px 25px;
+            background: #ffffff;
+            border: none;
+            border-radius: 30px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            transform: scale(1.07);
+            box-shadow: 0 6px 15px rgba(255, 255, 255, 0.6);
+        }
+
+        /* Floating animation */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="card">
+        <h2 class="heading">Random Quote Generator!!</h2>
+        <p id="quote" class="quote-text show">Click the button to get a quote!👇</p>
+
+        <button class="btn" onclick="generateQuote()">Generate Quote</button>
+    </div>
+
+    <script>
+        const quotes = [
+            "Believe you can and you're halfway there.",
+            "Success is not final, failure is not fatal: it is the courage to continue that counts.",
+            "Every moment is a fresh beginning.",
+            "Dream big and dare to fail.",
+            "Turn your wounds into wisdom.",
+            "What we think, we become.",
+            "Stay hungry, stay foolish.",
+            "Difficult roads often lead to beautiful destinations.",
+            "Your only limit is your mind.",
+            "Little things make big days.",
+            "Do something today that your future self will thank you for.",
+            "Believe in yourself and you will be unstoppable.",
+            "Don’t stop when you’re tired. Stop when you’re done.",
+            "Great things never come from comfort zones.",
+            "Push yourself, because no one else is going to do it for you.",
+            "The harder you work for something, the greater you’ll feel when you achieve it.",
+            "Stay positive, work hard, make it happen.",
+            "Life is 10% what happens to us and 90% how we react to it.",
+            "If you can dream it, you can do it.",
+            "The best time for new beginnings is now."
+        ];
+
+        function generateQuote() {
+            const quoteElement = document.getElementById("quote");
+            quoteElement.classList.remove("show");
+
+            const randomIndex = Math.floor(Math.random() * quotes.length);
+
+            setTimeout(() => {
+                quoteElement.innerText = quotes[randomIndex];
+                quoteElement.classList.add("show");
+            }, 200);
+        }
+    </script>
+
+</body>
+</html>
